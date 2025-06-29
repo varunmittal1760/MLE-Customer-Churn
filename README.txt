@@ -1,9 +1,5 @@
 # Telco Customer Churn Prediction 📞📉
 
-![Data Pipeline](https://img.shields.io/badge/Pipeline-Medallion_Architecture-blue)
-![ML Model](https://img.shields.io/badge/Model-XGBoost-orange)
-![Accuracy](https://img.shields.io/badge/Accuracy-95%25-brightgreen)
-
 ## Project Overview
 A machine learning pipeline to predict customer churn in the telecom industry, enabling targeted retention strategies.
 
