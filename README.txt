@@ -1,59 +1,68 @@
-# Telco Customer Churn Prediction
+# Telco Customer Churn Prediction 📞📉
+
+![Data Pipeline](https://img.shields.io/badge/Pipeline-Medallion_Architecture-blue)
+![ML Model](https://img.shields.io/badge/Model-XGBoost-orange)
+![Accuracy](https://img.shields.io/badge/Accuracy-95%25-brightgreen)
 
 ## Project Overview
-Machine learning pipeline to predict customer churn in telecom industry. Identifies at-risk customers for targeted retention strategies.
+A machine learning pipeline to predict customer churn in the telecom industry, enabling targeted retention strategies.
 
-## Key Features
-- Medallion Architecture ETL pipeline (Bronze→Silver→Gold)
-- XGBoost model with 95% prediction accuracy
-- Monthly batch processing via Airflow DAG
-- Model monitoring for data drift (PSI scores)
+## Key Features ✨
+- **ETL Pipeline**: Medallion Architecture (Bronze → Silver → Gold)
+- **High Accuracy**: XGBoost model achieves 95% prediction accuracy
+- **Automation**: Monthly batch processing via Airflow DAG
+- **Monitoring**: Tracks data drift using PSI scores
+- **Deployment**: Blue-green deployment strategy
 
-## Dataset
-- Source: Kaggle Telco Customer Churn
-- Period: Jan-Apr 2024 to Jul 2024
-- Records: 26,067 (7,443 unique customers)
-- Format: CSV → Parquet processed
+## Dataset 📊
+| Property       | Value                          |
+|----------------|--------------------------------|
+| Source         | Kaggle Telco Customer Churn    |
+| Time Period    | Jan 2024 - Jul 2024            |
+| Total Records  | 26,067 (7,443 unique customers)|
+| Format         | CSV → Processed Parquet        |
 
-## Technical Stack
-- Python (scikit-learn, XGBoost)
-- PySpark for ETL
-- Airflow for orchestration
-- Docker for containerization
+## Technical Stack 💻
+```mermaid
+graph LR
+    A[Python] --> B[scikit-learn]
+    A --> C[XGBoost]
+    D[PySpark] --> E[ETL]
+    F[Airflow] --> G[Orchestration]
+    H[Docker] --> I[Containerization]
+```
 
-## Pipeline Components
-1. Data Processing:
-   - Bronze: Raw partitioned CSVs
-   - Silver: Cleaned/validated Parquet
-   - Gold: Joined feature/label stores
+## Pipeline Components ⚙️
+### 1. Data Processing
+- **Bronze Layer**: Raw partitioned CSVs
+- **Silver Layer**: Cleaned/validated Parquet files
+- **Gold Layer**: Joined feature/label stores
 
-2. ML Development:
-   - Feature engineering (tenure groups)
-   - Logistic Regression + XGBoost
-   - Stratified 70-30 train-test split
+### 2. Machine Learning
+- Feature engineering (tenure groups)
+- Model comparison (Logistic Regression vs XGBoost)
+- Stratified 70-30 train-test split
 
-3. Deployment:
-   - Monthly batch predictions
-   - Model versioning (.pkl)
-   - Blue-green deployment
+### 3. Deployment
+- Monthly batch predictions
+- Model versioning (.pkl files)
+- Blue-green deployment
 
-## Usage
-1. Run ETL pipeline:
-   `python scripts/data_processing.py`
+## Usage 🚀
+```bash
+# Run ETL pipeline
+python scripts/data_processing.py
 
-2. Train model: 
-   `python scripts/train_model.py`
+# Train model
+python scripts/train_model.py
 
-3. Deploy DAG:
-   `airflow dags trigger churn_prediction`
+# Deploy DAG
+airflow dags trigger churn_prediction
+```
 
-## Model Governance
-- Retrain monthly
-- Alert if ROC_AUC < 0.65
-- Investigate PSI > 0.25
+## Model Governance 🔍
+| Metric          | Threshold | Action                          |
+|-----------------|-----------|---------------------------------|
+| ROC AUC         | < 0.65    | Trigger model retraining        |
+| PSI Score       | > 0.25    | Investigate data drift          |
 
-## Contributors
-[Your Name/Team]
-
-## License
-MIT
